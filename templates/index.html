@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+    <style>
+        body {
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 60px; 
+        }
+
+        .scoretable {
+            position: absolute;
+            text-align: left;
+            top: 10px;
+            right: 10px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            
+        }
+
+        footer {
+            position: absolute;
+            text-align: center;
+            padding: 10px;
+        }
+
+
+        .submitbutton {
+            display: inline-block;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px 20px;
+            margin: 20px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- skor tablosu -->
+    <div class="scoretable">
+        Kişisel Yüksek Skor: 
+        {% if personal_best is defined and personal_best is not none %}
+            {{ personal_best }}%
+        {% else %}
+            ?
+        {% endif %}<br>
+        Genel Yüksek Skor: {{ general_best }}%</div>
+
+    <h1>Quiz</h1>
+
+    <!-- Sorular -->
+    <h2>Soru1 : Adınız Nedir?</h2>
+    <form action="/username" method="GET">
+        <input type="text" name="username" value="{{ username if username is defined else '' }}" onchange="this.form.submit()"></form>
+
+    <br>
+
+    <form action="/quiz" method="POST">
+        <input type="hidden" name="username" value="{{ username if username is defined else '' }}">
+
+        <h2>Soru 2: Discord.py kütüphanesinde bir botun hazır olduğunu belirten olay nedir?</h2>
+        <input type="radio" name="soru1" value="a"> on_message()<br>
+        <input type="radio" name="soru1" value="b"> on_ready()<br>
+        <input type="radio" name="soru1" value="c"> on_connect()<br>
+        <input type="radio" name="soru1" value="d"> on_command()<br>
+
+        <h2>Soru 3: Flask hangi programlama diliyle geliştirilmiştir?</h2>
+        <input type="radio" name="soru2" value="a"> Java<br>
+        <input type="radio" name="soru2" value="b"> C++<br>
+        <input type="radio" name="soru2" value="c"> Python<br>
+        <input type="radio" name="soru2" value="d"> Ruby<br>
+
+        <h2>Soru 4: Yapay zekada öğrenme işlemi hangi kavramla tanımlanır?</h2>
+        <input type="radio" name="soru3" value="a"> Kodlama<br>
+        <input type="radio" name="soru3" value="b"> Eğitim<br>
+        <input type="radio" name="soru3" value="c"> Dokümantasyon<br>
+        <input type="radio" name="soru3" value="d"> Çalıştırma<br>
+
+        <h2>Soru 5: TensorFlow nedir?</h2>
+        <input type="radio" name="soru4" value="a"> Veri görselleştirme aracı<br>
+        <input type="radio" name="soru4" value="b"> Ses düzenleme programı<br>
+        <input type="radio" name="soru4" value="c"> Makine öğrenmesi ve yapay zeka kütüphanesi<br>
+        <input type="radio" name="soru4" value="d"> Tarayıcı eklentisi<br>
+
+        <h2>Soru 6: Doğal dil işleme (NLP) teknolojileri günlük hayatımızda hangi uygulamalarda kullanılmaktadır?</h2>
+        <input type="radio" name="soru5" value="a"> Sadece Bilimsel araştırma ve üniversite laboratuvarlarında kullanılır.<br>
+        <input type="radio" name="soru5" value="b"> Sadece metin çevirisi ve basit sohbet robotlarında kullanılır<br>
+        <input type="radio" name="soru5" value="c"> Sadece sesli asistanlar ve arama motorlarında kullanılır.<br>
+        <input type="radio" name="soru5" value="d"> Metin çevirisi, sesli asistanlar (Siri, Alexa), duygu analizi, otomatik metin özetleme ve spam filtreleme gibi birçok uygulamada kullanılır<br>
+
+        <br>
+        <button type="submit" class="submitbutton">Cevapları Gönder</button>
+    </form>
+
+    <footer>
+        Beyza Türken tarafından geliştirildi. Tüm hakları saklıdır.
+    </footer>
+</body>
+</html>

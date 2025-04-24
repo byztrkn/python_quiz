@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <title>Sınav Sonucu</title>
+    <style>
+        body {
+            position: relative;
+            min-height: 100vh;
+        }
+
+        footer {
+        position: absolute;
+        text-align: center;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px 0;
+    }
+    </style>
+</head>
+<body>
+    <h1>Sonuç</h1>
+
+    <!--Sonuç Bilgileri-->
+    <div class="scortable">
+        <p>Quizden {{ score }}% aldınız</p>
+        <p>Kişisel En Yüksek Puanınız: {{ personal_best }}%</p>
+        <p>Genel En Yüksek Puan: {{ general_best }}%</p>
+        <a href="{{ url_for('index')  }}">Tekrar Çöz</a>
+    </div>
+
+    <footer>
+        Beyza Türken tarafından geliştirildi. Tüm hakları saklıdır.
+    </footer>
+</body>
+</html>
